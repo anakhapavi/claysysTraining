@@ -2,126 +2,103 @@
 <html>
 <head>
   <title>Register Form</title>
-  <h1 style=text-align:center>Sign Up</h1>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="reg.css">
 </head>
-<body style="background-color:#F6635C;">
-<center>
- <form>
-  <table>
-   <tr>
-    <td>First name </td>
-    <td><input type="text"></td>
-   </tr>
 
-   <tr>
-    <td>Last name </td>
-    <td><input type="text"></td>
-   </tr>
-   
-   <tr>
-    <td>Date of birth </td>
-   <td><input type="date" name="begin"
-		placeholder="dd-mm-yyyy" value=""
-		min="1997-01-01" max="2030-12-31"></td>
-    </tr>
+<body>
+  
+    <img src="brand_img.png" alt="Registration Image">
+  
+<section class="container">
+  
+ <!--<div class="container">-->
+  <form>
+    <header>Registration</header>
+  <br>
+  <label>First name</label>
+  <input type="text" placeholder="Enter first name" required />
+  
+  <label>Last name</label>
+  <input type="text" placeholder="Enter last name" required />
 
-   <tr>
-    <td>Age </td>
-    <td><input type="text"></td>
-   </tr>
-
-     <tr>
-     <td>Gender </td>
-     <td>
-     <input type="radio" name="Gender"> Female
-     <input type="radio" name="Gender"> Male
-     <input type="radio" name="Gender"> Others
-    </td>
-   </tr>
-
- <tr>
-    <td>Phone number </td>
-    <td><input type="text"></td>
-   </tr>
-
-	
-
-    <tr>
-    <td>Email address :</td>
-    <td><input type="email"></td>
-   </tr>
-   
-     <tr>
-         <td> Address </td>              
-                
-             <td>
-                    <textarea rows="5" col="17" placeholder="Address"></textarea>
-                </td>
-            </tr>
-
-	 <tr>
-            <td>
-                 State:
-            </td>
-                <td>
-                    <select>
-		    <option>---Select---</option>
-                    <option>AndhraPradesh</option>
-                    <option>Assam</option>
-                    <option>Goa</option>
-                    <option>Gujarat</option>
-                    <option>Kerala</option>
-                    <option>Tamilnadu</option>
-		    <option>Karnataka</option>
-                    </select>
-                </td>
-            </tr>
-
-              <tr>
-                <td> City   </td>
-                  <td>
-                    <select>
-		    <option>---Select---</option>
- 		    <option>visakhapattanam</option>
-                    <option>Vasco_Mormugo</option>
-                    <option>Triuvanathapuram</option>
-                    <option>Kochi</option>
-                    <option>Banglore</option>
-                    <option>chennai</option>
-		    <select>
-		   </td>
-            </tr> 
-                
-               
-	
-
-   <tr>
-    <td>Username </td>
-    <td><input type="text"></td>
-   </tr>
-	
-   <tr>
-    <td>Password </td>
-    <td><input type="password"></td>
-   </tr>
-
- <tr>
-    <td>Confirm Password </td>
-    <td><input type="password"></td>
-   </tr>
- <br>
+  <label>Date of birth</label>
+  <input type="date" placeholder="Enter birth date" required />
  
-   
-   
+  <label>Age</label>
+  <input type="text" placeholder=" " required />
+  
+
+  <label>Gender</label>
+  <!--<div class="radio-group">
+  <input type="radio" id="female" name="gender" />
+  <label for="check-male">Female</label>
+  
+  <input type="radio" id="male" name="gender" />
+  <label for="check-female">Male</label>
     
+  <input type="radio" id="others" name="gender" />
+  <label for="check-other">Others</label>
+  </div> -->
 
-  <tr>
-           <td><input type="button" name="Sign Up" value="Sign Up"></td>
-           <td><p>Not yet a Member? <a href="signin.html">Sign in</a></p></td>
-        </tr 
+    
+  <div class="radio-group">
+    <input type="radio" id="female" name="gender" value="female" required>
+    <label for="female">Female</label>
 
-  </table>
-</center>
+    <input type="radio" id="male" name="gender" value="male" required>
+    <label for="male">Male</label>
+
+    <input type="radio" id="others" name="gender" value="others" required>
+    <label for="others">Others</label>
+  </div>
+ 
+  <label>Phone number</label>
+  <input type="text" placeholder="Enter phone number" required />
+  
+  <label>Email address</label>
+  <input type="email" placeholder="abc@gmail.com" required />
+            
+  <label>Address</label>           
+  <textarea rows="5" col="50" placeholder="Address"></textarea>
+      
+  <label>State</label>
+       <select>
+		    <option hidden>Select</option>
+        <option>AndhraPradesh</option>
+        <option>Assam</option>
+        <option>Goa</option>
+        <option>Gujarat</option>
+        <option>Kerala</option>
+        <option>Tamilnadu</option>           
+		    <option>Karnataka</option>
+    </select>    
+               
+  <label>City</label> 
+      <select>
+		    <option hidden>Select</option>
+ 		    <option>visakhapattanam</option>
+         <option>Vasco_Mormugo</option>
+         <option>Triuvanathapuram</option>
+         <option>Kochi</option>
+         <option>Banglore</option>
+         <option>chennai</option>
+		  <select>                    
+
+  <label>Username</label>
+  <input type="text" placeholder="Enter username" required />
+  	
+  <label>Password</label>
+  <input type="password" placeholder="Enter password" required />
+  
+  <label>Confirm Password</label>
+  <input type="password" placeholder="Enter password" required />
+   
+ <button type="submit">Register</button>
+ <p>Not yet a Member? <a href="signin.html">Sign in</a></p>
+   
  </form>
+</section>
 </body>
 </html>
