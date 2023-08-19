@@ -1,59 +1,96 @@
+<!DOCTYPE html>
 <html>
 <head>
-<title>contact us </title>
-
+    <title>Contact Us</title>
 </head>
-<div>
-<h1 align="center">Contact  us!!
-  
-</h1>
-</div>
-<body style="background-color:CECE5A;">
- <p>Please fill out the form below to get in touch with us.</p>
-              </td>
-          </tr>
-        <tr>
-            <th><label for="name">Name:</label></th>
-            <td><input type="text" id="name" name="name" required></td>
-        </tr>
-       
+<body style="background-color: #CECE5A;">
+    <form action="Home.html" method="post">
+        <h1 align="center">Contact Us!!</h1>
+        <p>Please fill out the form below to get in touch with us.</p>
+        <table align="center">
+            <tr>
+                <th><label for="name">Name:</label></th>
+                <td><input type="text" id="name" name="name" required onblur="validateName()">
+                    <span id="nameError" style="color: red;"></span>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="email">Email:</label></th>
+                <td><input type="email" id="email" name="email" required onblur="validateEmail()">
+                    <span id="emailError" style="color: red;"></span>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="subject">Subject:</label></th>
+                <td><input type="text" id="subject" name="subject" required></td>
+            </tr>
+            <tr>
+                <th><label for="message">Message:</label></th>
+                <td><textarea id="message" name="message" rows="4" required onblur="validateMessage()"></textarea>
+                    <span id="messageError" style="color: red;"></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <button type="submit" style="padding: 10px; background-color: #4CAF50; color: #fff; border: none; border-radius: 3px; cursor: pointer;">Submit</button>
+                </td>
+            </tr>
+        </table>
+    </form>
 
-        <tr>
-            <th><label for="email">Email:</label></th>
-            <td><input type="email" id="email" name="email" required></td>
-        </tr>
-         
-         
-        <tr>
-            <th><label for="subject">Subject:</label></th>
-            <td><input type="text" id="subject" name="subject" required></td>
-        </tr>
-          
-        <tr>
-            <th><label for="message">Message:</label></th>
-            <td><textarea id="message" name="message" rows="4" required></textarea></td>
-        </tr>
-        <tr>
-            <td colspan="2" align="center">
-	
-                  <input type="submit" value="Sign Up" style="padding: 10px; background-color: #4CAF50; color: #fff; border: none; border-radius: 3px; cursor: pointer;">
-            </td>
-        </tr>
-    </table>
+    <div style="padding: 200px; text-align: center;">
+        <div style="max-width: 400px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; background-color: #fff; border-radius: 8px;">
+            <p>ClaySys Technologies Pvt Ltd<br>
+            InfoPark Phase 2<br>
+            Kochi, Kerala<br>
+            India, 682303<br>
+            Tel: +91-484-297-5311<br>
+            General Email: info@claysys.com<br>
+            Support Email: support@claysys.com<br>
+            Careers Email: hr@claysys.com<br></p>
+        </div>
+        <p>&copy; 2023 My Website. All rights reserved.</p>
+    </div>
 
-<div style="padding: 20px; text-align: center;">
-<div style="max-width: 400px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; background-color: #fff; border-radius: 8px;">
-<p>ClaySys Technologies Pvt Ltd<br>
-InfoPark Phase 2<br>
-Kochi, Kerala<br>
-India, 682303<br>
-Tel : +91-484-297-5311<br>
-General Email: info@claysys.com<br>
-Support Email: support@claysys.com<br>
-Careers Email: hr@claysys.com<br></p>
-</div>
-<p>&copy; 2023 My Website. All rights reserved.</p>
-</div>
-</center>
+    <script>
+        function validateName() {
+            const nameInput = document.getElementById('name');
+            const nameError = document.getElementById('nameError');
+            const name = nameInput.value.trim();
+
+            if (name === "") {
+                nameError.textContent = 'Name is required.';
+            } else {
+                nameError.textContent = '';
+            }
+        }
+
+        function validateEmail() {
+            const emailInput = document.getElementById('email');
+            const emailError = document.getElementById('emailError');
+            const email = emailInput.value.trim();
+            const validEmailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (email === "") {
+                emailError.textContent = 'Email is required.';
+            } else if (!validEmailRegex.test(email)) {
+                emailError.textContent = 'Invalid email format.';
+            } else {
+                emailError.textContent = '';
+            }
+        }
+
+        function validateMessage() {
+            const messageInput = document.getElementById('message');
+            const messageError = document.getElementById('messageError');
+            const message = messageInput.value.trim();
+
+            if (message === "") {
+                messageError.textContent = 'Message is required.';
+            } else {
+                messageError.textContent = '';
+            }
+        }
+    </script>
 </body>
 </html>
