@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8">
   <link rel="stylesheet" href="reg.css">
+  <script src="val.js"></script>
 </head>
 
 <body>
@@ -14,20 +15,39 @@
 <section class="container">
   
  <!--<div class="container">-->
-  <form>
-    <header>Registration</header>
+  <form  action="signin.html" id="form">
+  <header>Registration</header>
   <br>
-  <label>First name</label>
-  <input type="text" placeholder="Enter first name" required />
   
-  <label>Last name</label>
-  <input type="text" placeholder="Enter last name" required />
+  <label>First name</label>
+  <input type="text" id="firstName" placeholder="Enter first name" onblur="validateFirstName()" required />
+  <p id="firstNameError" style="color: red;" ></p>
+ 
+
+  <!--<div class="form-container">
+    <div class="form-group"> -->
+       <!-- <label for="firstName">First name</label>
+        :<input type="text" id="firstName" onblur="validateFirstName()" required>
+        <p id="firstNameError" style="color: red;"></p>
+    </div> -->
+
+  
+    <label>Last name</label>
+    <input type="text" id="lastName" placeholder="Enter last name" onblur="validateLastName()" required />
+     <p id="lastNameError" style="color: red;" ></p>
+   
+    
+
 
   <label>Date of birth</label>
-  <input type="date" placeholder="Enter birth date" required />
+  <input type="date" placeholder="Enter birth date" />
+  <span class="error-message" id="dobError">Date of birth is required</span>
+
  
   <label>Age</label>
-  <input type="text" placeholder=" " required />
+  <input type="text" placeholder="Enter age"  />
+  <span class="error-message" id="ageError">Age is required</span>
+
   
 
   <label>Gender</label>
@@ -44,61 +64,67 @@
 
     
   <div class="radio-group">
-    <input type="radio" id="female" name="gender" value="female" required>
+    <input type="radio" id="female" name="gender" value="female" >
     <label for="female">Female</label>
 
-    <input type="radio" id="male" name="gender" value="male" required>
+    <input type="radio" id="male" name="gender" value="male" >
     <label for="male">Male</label>
 
-    <input type="radio" id="others" name="gender" value="others" required>
+    <input type="radio" id="others" name="gender" value="others" >
     <label for="others">Others</label>
   </div>
  
   <label>Phone number</label>
-  <input type="text" placeholder="Enter phone number" required />
-  
+  <input type="text" id="mobileNumber" placeholder="Enter Phone number" onblur="validateMobileNumber()" required>
+  <span id="mobileNumberError" class="error-message">Please enter a valid phone number.</span>
+ 
   <label>Email address</label>
-  <input type="email" placeholder="abc@gmail.com" required />
+  <input type="email" placeholder="abc@gmail.com" id="email" onblur="validateEmail()" required  />
+  <span id="emailError" class="error-message">Please enter a valid email address.</span>
+  
+
             
   <label>Address</label>           
-  <textarea rows="5" col="50" placeholder="Address"></textarea>
-      
+  <textarea rows="5" col="50" placeholder="Address" required></textarea>
+
+     
+
   <label>State</label>
-       <select>
+       <select id="state" name="state">
 		    <option hidden>Select</option>
         <option>AndhraPradesh</option>
-        <option>Assam</option>
         <option>Goa</option>
-        <option>Gujarat</option>
+        <option>Karnataka</option>
         <option>Kerala</option>
-        <option>Tamilnadu</option>           
-		    <option>Karnataka</option>
-    </select>    
+        <option>Kerala</option>
+        <option>TamilNadu</option>           
+		    </select>    
                
   <label>City</label> 
-      <select>
-		    <option hidden>Select</option>
- 		    <option>visakhapattanam</option>
-         <option>Vasco_Mormugo</option>
-         <option>Triuvanathapuram</option>
-         <option>Kochi</option>
-         <option>Banglore</option>
-         <option>chennai</option>
-		  <select>                    
+      <select id="city" name="city">
+      <option hidden>Select</option>
+		  </select>                    
 
   <label>Username</label>
-  <input type="text" placeholder="Enter username" required />
+  <input type="text" id="username1" name="username" placeholder="Enter username" oninput="validateUsername()" required>
+  <p id="usernameError" style="color:red;"></p>
+
   	
   <label>Password</label>
-  <input type="password" placeholder="Enter password" required />
+  <input type="password" id="password1" placeholder="Enter password" oninput="validatePassword()" required/>
+  <p id="passwordError" style="color:red;"></p>
   
   <label>Confirm Password</label>
-  <input type="password" placeholder="Enter password" required />
+  <input type="password" id="cpassword" name="cpassword" placeholder="Renter password" oninput="validateCpassword()" required/>
+  <p id="cpasswordError" style="color: red;"></p>
    
- <button type="submit">Register</button>
- <p>Not yet a Member? <a href="signin.html">Sign in</a></p>
+ <button type="submit" onclick="validateForm()">Register</button>
+ <p>Already have an account? <a href="signin.html">Sign in</a></p>
    
  </form>
 </section>
+ <script src="dropdown.js"></script>
+
+
 </body>
 </html>
