@@ -1,32 +1,35 @@
 <!DOCTYPE html>
-<html></html>
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="signin.css">
     <title>Login Form</title>
-    
+    <script src="val.js" defer></script>
+
+    <!--<script src="sigin.js" defer></script> -->
 </head>
 <body>
     <div class="login-form">
-        <form>
-            <header>Login </header>
+        <form action="welcome.html" method="post">
+            <header>Login</header>
             <label for="username">Username:</label>
-            <input type="text" placeholder="Enter username" required />
+            <input type="text" id="username" placeholder="Enter username" oninput="validateUsername1()" required />
+            <span id="usernameError" class="error-message"></span>           
 
             <label for="password">Password:</label>
-            <input type="password" placeholder="Enter password" required />
+            <input type="password" id="password" placeholder="Enter password" oninput="validatePassword1()" required />
+            <span id="passwordError" class="error-message"></span>
 
             <label for="remember">
-            <input type="checkbox" id="remember" name="remember"> Remember me
+                <input type="checkbox" id="remember" name="remember"> Remember me
             </label>
             <a href="forgot_password.html"> Forgot Password?</a>
 
-            <button type="submit">Login</button>
-        
-       
-        <p>New user?  <a href="reg.html">    Sign up </a></p>
-      </form>
+            <button id="loginButton">Login</button>
+
+            <p>New user? <a href="reg.html">Sign up</a></p>
+        </form>
     </div>
 </body>
 </html>
