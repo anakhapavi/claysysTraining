@@ -132,7 +132,7 @@ else
       event.target.submit();
     }
   }
-
+  //validate for login username
   function validateUsername1() {
     const usernameInput = document.getElementById('username');
     const username = usernameInput.value.trim();
@@ -146,7 +146,7 @@ else
         usernameErrorSpan.textContent = 'Username must be 4 to 20 characters long and can only contain letters, numbers, and underscores.';
     }
 }
-
+//validate for login password
 function validatePassword1() {
     const passwordInput = document.getElementById('password');
     const password = passwordInput.value;
