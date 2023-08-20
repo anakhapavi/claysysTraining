@@ -5,12 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8">
   <link rel="stylesheet" href="reg.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <script src="val.js"></script>
+  <script src="dropdown.js"></script>
+
 </head>
 
 <body>
-  
-    <img src="brand_img.png" alt="Registration Image">
+  <a href="Home.html" class="home-icon"><i class="fas fa-home"></i></a>
+  <img src="brand_img.png" alt="Registration Image">
   
 <section class="container">
   
@@ -34,9 +37,7 @@
   
     <label>Last name</label>
     <input type="text" id="lastName" placeholder="Enter last name" onblur="validateLastName()" required />
-     <p id="lastNameError" style="color: red;" ></p>
-   
-    
+    <p id="lastNameError" style="color: red;" ></p>  
 
 
   <label>Date of birth</label>
@@ -90,20 +91,20 @@
      
 
   <label>State</label>
-       <select id="state" name="state">
-		    <option hidden>Select</option>
-        <option>AndhraPradesh</option>
-        <option>Goa</option>
-        <option>Karnataka</option>
-        <option>Kerala</option>
-        <option>Kerala</option>
-        <option>TamilNadu</option>           
-		    </select>    
+          <select id="state" name="state">
+          <option hidden>Select</option>
+          <option>AndhraPradesh</option>
+          <option>Goa</option>
+          <option>Karnataka</option>
+          <option>Kerala</option>
+          <option>TamilNadu</option>
+          <option>Assam</option>
+          </select>    
                
-  <label>City</label> 
-      <select id="city" name="city">
-      <option hidden>Select</option>
-		  </select>                    
+    <label>City</label> 
+        <select id="city" name="city">
+        <option hidden>Select</option>
+        </select>                   
 
   <label>Username</label>
   <input type="text" id="username1" name="username" placeholder="Enter username" oninput="validateUsername()" required>
@@ -123,7 +124,6 @@
    
  </form>
 </section>
- <script src="dropdown.js"></script>
 
 
 </body>
