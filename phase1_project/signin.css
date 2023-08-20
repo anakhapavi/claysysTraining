@@ -1,6 +1,8 @@
 body {
-    /*background-image: url("code.gif"); */
-    background-color: #a09b9b;
+    background-image: url("sign.jpg"); 
+    /*background-color: #FFC107;*/
+    background-repeat: no-repeat;
+    
    }
 
    .login-form header {
@@ -9,8 +11,18 @@ body {
     font-weight: 600;
     text-align: center;
     font-family: "Poppins", sans-serif;
-
   }
+
+  .home-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    color:white;
+    cursor: pointer;
+  }
+  
+
 /* Basic styling for the login form container */
  .login-form {
     width: 400px;
@@ -26,8 +38,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   } 
-
-  
+ 
   /* Styling for the form inputs */
   .login-form input[type="text"],
   .login-form input[type="password"] {
