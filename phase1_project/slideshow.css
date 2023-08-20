@@ -16,7 +16,7 @@ background-attachment: fixed;
 #slideshow {
 overflow: hidden;
 height: 510px;
-width: 728px;
+width: 735px;
 margin: 0 auto;
 }
 
@@ -25,7 +25,7 @@ with a fixed width and height */
 .slide {
 float: left;
 height: 510px;
-width: 728px;
+width: 735px;
 }
 
 /* Add animation to the slides */
@@ -33,7 +33,7 @@ width: 728px;
 
 /* Calculate the total width on the
 basis of number of slides */
-width: calc(728px * 5);
+width: calc(735px * 5);
 
 /* Specify the animation with the
 duration and speed */
@@ -73,17 +73,17 @@ each of the slides */
 }
 
 40% {
-	margin-left: calc(-728px * 1);
+	margin-left: calc(-735px * 1);
 }
 
 60% {
-	margin-left: calc(-728px * 2);
+	margin-left: calc(-735px * 2);
 }
 
 80% {
-	margin-left: calc(-728px * 3);
+	margin-left: calc(-735px * 3);
 }
 100%{
-    margin-left:calc(- 4) ;
+    margin-left:calc(-735px * 4) ;
 }
 }
