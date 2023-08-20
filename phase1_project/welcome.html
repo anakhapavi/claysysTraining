@@ -2,14 +2,29 @@
 <html>
 <head>
     <title>My Page with Background Image</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
             margin: 0;
             padding: 0;
-            background-image: url("code.gif");
+            background-image: url("welcome1.gif");
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
+            flex-direction: column;
+            justify-content: flex-start; /* Align items to the top */
+            align-items: flex-end; /* Align items to the right */
+        }
+        a{
+            font-size: 25px;
+            margin-left: 10px;
+            cursor: pointer;
+            color: white;
+            position: absolute;
+            top: 20px; 
+            right: 20px;
         }
 
         h1 {
@@ -21,12 +36,13 @@
         }
 
         header{
-            width: 150px; /* Adjust the width as needed */
+            width: 150px; 
             height: auto;
+            
         
         }        
         header img {
-            max-width: 150px; /* Adjust the width as needed */
+            max-width: 120px;
             height: auto;
         }
     </style>
@@ -35,6 +51,7 @@
     <header>
         <img src="claysys-logo.png" alt="Logo">
     </header>
+    <a href="home.html"><i class="fa fa-home"></i></a>
     <h1>Welcome to ClaySys</h1>
 </body>
 </html>
