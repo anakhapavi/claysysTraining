@@ -1,237 +1,249 @@
---------------------------------------------create database-------------------------------------------------------------------------------------------------------
-create database OFFICE;
-use OFFICE;
+SQL 1-8 Task
 
-----------------------------------------------create tables-------------------------------------------------------------------------------------------------
+---------------------------------------------CREATE DATABASE-----------------------------------------------------------------------------------------------
+CREATE DATABASE claysys;
+USE claysys;
 
-CREATE TABLE EMP(
-	EMP_ID  INT PRIMARY KEY,
-	DEP_ID INT FOREIGN KEY REFERENCES DEPARTMENT(DEP_ID),
-	FNAME VARCHAR(20) ,
-	LNAME VARCHAR(20),
-	DOB DATETIME,
-	HOBBY VARCHAR(30),
-	ADDDRESS VARCHAR(20),
-	CITY VARCHAR(30),
-	COUNTRY VARCHAR(30),
-	PHONE BIGINT
+------------------------------------------CREATE TABLES(EMPLOYEE TABLE HAD 1O FIELDS)----------------------------------------------------------------------------
+CREATE TABLE department(
+	dep_id INT PRIMARY KEY,
+	dep_name VARCHAR(30)
 );
 
-CREATE TABLE DEPARTMENT(
-	DEP_ID INT PRIMARY KEY,
-	DEP_NAME VARCHAR(30)
+CREATE TABLE employee(
+	emp_id  INT PRIMARY KEY,
+	dep_id INT,
+	fname VARCHAR(20) ,
+	lname VARCHAR(20),
+	dob DATETIME,
+	hobby VARCHAR(30),
+	addrs VARCHAR(20),
+	city VARCHAR(30),
+	country VARCHAR(30),
+	phone BIGINT,
+   FOREIGN KEY (dep_id) REFERENCES department(dep_id)
+
 );
 
-CREATE TABLE SALARY(
-	SAL_ID INT PRIMARY KEY,
-	PERSON_ID INT FOREIGN KEY REFERENCES EMP(EMP_ID),
-	GROSS MONEY,
-	SAL_DATE DATETIME
+CREATE TABLE salary(
+	sal_id INT PRIMARY KEY,
+	person_id INT, 
+	gross MONEY,
+	sal_date DATETIME,
+	FOREIGN KEY(person_id) REFERENCES employee(emp_id)
 );
 
-CREATE TABLE TEMP_EMP(
-	ID INT PRIMARY KEY,
-	NAME VARCHAR(20),
-    DOB DATETIME
+CREATE TABLE temp_emp(
+	id INT PRIMARY KEY,
+	name VARCHAR(20),
+   dob DATETIME
 );
 
--------------------------------------------------------Insertions--------------------------------------------------------------------------------------------
+---------------------------INSERT------------------------UPDATE------------------------------DELETE-------------------------------DROP----------------------------------
+
 
 --INSERTION ON TEMP_EMP TABLE
-INSERT INTO TEMP_EMP VALUES(10,'ANAKHA','1999-10-18');
-INSERT INTO TEMP_EMP VALUES(20,'NANDHU','1999-04-30');
-INSERT INTO TEMP_EMP VALUES(30,'ASHITHA','1992-06-29');
+INSERT INTO temp_emp VALUES(10,'Anakha','1999-10-18');
+INSERT INTO temp_emp VALUES(20,'Nandhu','1999-04-30');
+INSERT INTO temp_emp VALUES(30,'Ashitha','1992-06-29');
+
 
 
 --INSERTION ON DEPARTMENT TABLE
-INSERT INTO DEPARTMENT VALUES(1,'ADMINISTRATION');
-INSERT INTO DEPARTMENT VALUES(2,'IT');
-INSERT INTO DEPARTMENT VALUES(3,'SUPPORT');
-INSERT INTO DEPARTMENT VALUES(4,'MANAGEMENT');
-INSERT INTO DEPARTMENT VALUES(5,'SALES');
+INSERT INTO department VALUES(1,'Administration');
+INSERT INTO department VALUES(2,'IT');
+INSERT INTO department VALUES(3,'Support');
+INSERT INTO department VALUES(4,'Management');
+INSERT INTO department VALUES(5,'Sales');
 
 --INSERTION ON EMP TABLE
-INSERT INTO EMP VALUES(1,1,'JOHN','ABRAHAM','1979-05-25','READING','KKM','KOCHI','INDIA',9747562510);
-INSERT INTO EMP VALUES(2,1,'RAM','MOHAN','1982-05-10','COOKING','GGG','CHENNAI','INDIA',90471251090);
-INSERT INTO EMP VALUES(3,2,'ANU','MATHEW','1990-10-15','READING','AAA','BANGLORE','INDIA',9123581110);
-INSERT INTO EMP VALUES(4,3,'REMYA','M','1989-01-01','GARDENING','BBB','TVM','INDIA',8814567520);
-INSERT INTO EMP VALUES(5,5,'GEROGE','JACOB','1990-05-25','','GGG','KOCHI','INDIA',8586828410);
-INSERT INTO EMP VALUES(6,1,'JACOB','ALAN','1995-05-25','READING','JJJ','MADURAI','INDIA',7585474116);
-INSERT INTO EMP VALUES(7,2,'MANU','','1996-05-12','DRAWING','MMM','CHENNAI','INDIA',7581020116);
-INSERT INTO EMP VALUES(8,4,'HEMA','LATHA','1999-12-12','READING','AAA','KOCHI','INDIA',89635544);
-INSERT INTO EMP VALUES(9,5,'LAKSHMI','C','1999-10-10','COOKING','LLL','TUMKUR','INDIA',8877741160);
-INSERT INTO EMP VALUES(10,3,'MIDHUN','RAJ','1985-07-14','WRITING','RRR','CHENNAI','INDIA',6233474116);
+INSERT INTO employee VALUES(1,1,'John','Abtaham','1979-05-25','Reading','kkm','Kochi','India',9747562510);
+INSERT INTO employee VALUES(2,1,'Ram','Mohan','1982-05-10','Cooking','ggg','Chennai','India',90471251090);
+INSERT INTO employee VALUES(3,2,'Anu','Mathew','1990-10-15','Reading','aaa','Banglore','India',9123581110);
+INSERT INTO employee VALUES(4,3,'Remaya','M','1989-01-01','Gardening','bbb','Tvm','India',8814567520);
+INSERT INTO employee VALUES(5,5,'Geroge','Jacob','1990-05-25','','ggg','Kochi','India',8586828410);
+INSERT INTO employee VALUES(6,1,'Jacob','Alan','1995-05-25','Reading','jjj','Madurai','India',7585474116);
+INSERT INTO employee VALUES(7,2,'Manu','','1996-05-12','DRAWING','MMM','Chennai','India',7581020116);
+INSERT INTO employee VALUES(8,4,'Hema','LATHA','1999-12-12','READING','aaa','Kochi','India',89635544);
+INSERT INTO employee VALUES(9,5,'Lakshmi','C','1999-10-10','Cooking','lll','Tumkur','India',8877741160);
+INSERT INTO employee VALUES(10,3,'Midhun','Raj','1985-07-14','Writing','RRR','Chennai','India',6233474116);
 
 --INSERTION ON SALAY
-INSERT INTO SALARY VALUES(101,1,10000,'2023-04-02')
-INSERT INTO SALARY VALUES(102,2,10000,'2023-04-02');
-INSERT INTO SALARY VALUES(103,3,15000,'2023-04-15');
-INSERT INTO SALARY VALUES(104,4,12000,'2023-04-10');
-INSERT INTO SALARY VALUES(105,5,10000,'2023-04-02');
-INSERT INTO SALARY VALUES(106,6,10000,'2023-04-02');
-INSERT INTO SALARY VALUES(107,7,15000,'2023-04-15');
-INSERT INTO SALARY VALUES(108,8,12000,'2023-04-10');
-INSERT INTO SALARY VALUES(109,9,10000,'2023-04-02');
-INSERT INTO SALARY VALUES(110,10,12000,'2023-04-10');
+INSERT INTO salary VALUES(101,1,10000,'2023-04-02')
+INSERT INTO salary VALUES(102,2,10000,'2023-04-02');
+INSERT INTO salary VALUES(103,3,15000,'2023-04-15');
+INSERT INTO salary VALUES(104,4,12000,'2023-04-10');
+INSERT INTO salary VALUES(105,5,10000,'2023-04-02');
+INSERT INTO salary VALUES(106,6,10000,'2023-04-02');
+INSERT INTO salary VALUES(107,7,15000,'2023-04-15');
+INSERT INTO salary VALUES(108,8,12000,'2023-04-10');
+INSERT INTO salary VALUES(109,9,10000,'2023-04-02');
+INSERT INTO salary VALUES(110,10,12000,'2023-04-10');
 
 
---------------------------------------------------Updation---------------------------------------------------------------------------------------------------
---UPDATE ON SALARY GROSS 
-UPDATE SALARY SET GROSS=20000 WHERE PERSON_ID=3;
-UPDATE SALARY SET GROSS=18000 WHERE PERSON_ID=10;
 
-------------------------------------------------------Deletion-----------------------------------------------------------------------------------------------
---DELETE DELETE FROM TEMP_EMP;
+--UPDATE ON SALARY GROSS -----------------------------------------------------------------------------------------------------------------------------------
+UPDATE salary SET gross=20000 WHERE person_id=3;
+UPDATE salary SET gross=18000 WHERE person_id=10;
 
---DROP ---------
-DROP TABLE TEMP_EMP;
+--DELETE ---------------------------------------------------------------------------------------------------------------------------------------------------
+DELETE FROM temp_emp;
 
-
----------------------------------------------SECOND HIGHEST SALARY ---------------------------------------------------------------------------------------------
-
-SELECT MAX(GROSS) AS SEC_SALARY FROM SALARY WHERE GROSS < (SELECT MAX(GROSS) FROM SALARY);
+--DROP ------------------------------------------------------------------------------------------------------------------------------------------------------
+DROP TABLE temp_emp;
 
 
-----------------------------------------------LIST THE NO.OF EMPLOYESS IN EACH DEPARTMENT---------------------------------------------------------------------
- 
-SELECT DEP_ID,COUNT(*) AS NO_OF_EMP FROM EMP GROUP BY DEP_ID ;
+---------------------------SECOND HIGHEST SALARY -------------------------------------------------------------------------------------------------------------------------------------
+
+SELECT MAX(gross) AS sec_salary FROM salary WHERE gross < (SELECT MAX(gross) FROM salary);
 
 
-------------------------------------------------SELECT OPERATIONS---------------------------------------------------------------------------------------------
-SELECT *FROM EMP;
-SELECT * FROM DEPARTMENT;
-SELECT * FROM SALARY;
-SELECT *FROM TEMP_EMP;
+-------------------------------- LIST THE NO.OF EMPLOYESS IN EACH DEPARTMENT --------------------------------------------------------------------------------------------------------------
 
-SELECT FNAME,LNAME,DOB FROM EMP ORDER BY DOB ;
-SELECT PERSON_ID,GROSS FROM SALARY ORDER BY GROSS DESC;
+SELECT dep_id,COUNT(*) AS no_of_emp FROM employee GROUP BY dep_id;
 
---------------------------------------------------Joins--------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------SELECT OPERATIONS------------------------------------------------------------------------------------------------------------------------------------------
+SELECT *FROM employee;
+SELECT * FROM department;
+SELECT * FROM salary;
+--SELECT *FROM temp_emp;
 
---INNER JOIN
-SELECT E.FNAME,E.LNAME,D.DEP_NAME,S.GROSS FROM EMP AS E INNER JOIN DEPARTMENT D ON E.DEP_ID=D.DEP_ID INNER JOIN SALARY AS S ON S.PERSON_ID=E.EMP_ID GROUP BY E.FNAME,E.LNAME,D.DEP_NAME,S.GROSS,E.EMP_ID;
+SELECT fname,lname,dob FROM employee ORDER BY dob ;
+SELECT person_id,gross FROM salary ORDER BY gross DESC;
+
+
+
+---------------------------------------------------------------JOINS--------------------------------------------------------------------------------------------
+
+
+--INNER JOIN -----------------------------------------------------------------------------------------------------------------------------
+SELECT e.fname,e.lname,d.dep_name,s.gross FROM employee AS e INNER JOIN department d ON e.dep_id=d.dep_id INNER JOIN salary AS s ON s.person_id=e.emp_id GROUP BY e.fname,e.lname,d.dep_name,s.gross,e.emp_id;
 
 --LEFT JOIN
-SELECT E.FNAME,E.LNAME,D.DEP_NAME,S.GROSS FROM EMP AS E LEFT JOIN DEPARTMENT D ON E.DEP_ID=D.DEP_ID LEFT JOIN SALARY AS S ON S.PERSON_ID=E.EMP_ID;
+SELECT e.fname,e.lname,d.dep_name,s.gross FROM employee AS E LEFT JOIN DEPARTMENT D ON E.DEP_ID=D.DEP_ID LEFT JOIN SALARY AS S ON S.PERSON_ID=E.EMP_ID;
 
 --RIGHT JOIN
-SELECT D.DEP_NAME,E.FNAME FROM DEPARTMENT AS D RIGHT JOIN EMP AS E ON D.DEP_ID=E.DEP_ID;
+SELECT d.dep_name,e.fname FROM department AS d RIGHT JOIN employee AS e ON e.dep_id=d.dep_id;
 
 --FULL JOIN
-SELECT E.FNAME,E.LNAME,S.GROSS FROM EMP AS E FULL JOIN  SALARY AS S ON S.PERSON_ID=E.EMP_ID GROUP BY S.GROSS,E.FNAME,E.LNAME;
+SELECT e.fname,e.lname,s.gross FROM employee AS E FULL JOIN salary AS s ON s.person_id=e.emp_id GROUP BY s.gross,e.fname,e.lname;
 
 
----------------------------------------------------STORED PROCEDURE------------------------------------------------------------------------------------------
------------ CURD OPERATIONS
+---------------------------------------------------STORED PROCEDURE--------------------------------------------------------------------------------------
+----------- CURD OPERATIONS------------------------
 
--- 1. CREATE-----------
-CREATE PROCEDURE showEMP
+-- 1. CREATE
+
+
+CREATE PROCEDURE showEmp
 AS
 BEGIN
-	SELECT *FROM EMP
+    SELECT * FROM employee;
 END
-showEMP
 
--- 2.READ EMPLOYEE--------
+exec showEmp
+
+-- 2.READ EMPLOYEE
 CREATE PROCEDURE readEMP
-@ID INT
+@id INT
 AS
 BEGIN
-	SELECT * FROM EMP
-	WHERE EMP_ID=@ID
+	SELECT * FROM employee
+	WHERE emp_id=@id
 END
 
-readEMP 2
+EXEC readEMP 2
 
 
--- 3. INSERT INTO-----------
+-- 3. INSERT INTO
 
 CREATE PROCEDURE empDETAILS
-@EMPID INT ,
-@DEPID INT,
-@FIRST VARCHAR(20),
-@LAST VARCHAR(20),
-@EMPDOB DATETIME,
-@HOBBY VARCHAR(30),
-@ADD VARCHAR(20),
-@CITY VARCHAR(30),
-@COUNTRY VARCHAR(30),
-@PH BIGINT
+@eid INT ,
+@did INT,
+@fname VARCHAR(20),
+@lname VARCHAR(20),
+@dob DATETIME,
+@hobby VARCHAR(30),
+@addrs VARCHAR(20),
+@city VARCHAR(30),
+@country VARCHAR(30),
+@ph BIGINT
 
 AS
 	BEGIN
-		INSERT INTO EMP(EMP_ID,DEP_ID,FNAME,LNAME,DOB,HOBBY,ADDDRESS,CITY,COUNTRY,PHONE)
-		VALUES(@EMPID,@DEPID,@FIRST,@LAST,@EMPDOB,@HOBBY,@ADD,@CITY,@COUNTRY,@PH)
+		INSERT INTO employee(emp_id,dep_id,fname,lname,dob,hobby,addrs,city,country,phone)
+		VALUES(@eid,@did,@fname,@lname,@dob,@hobby,@addrs,@city,@country,@ph)
 	END
 
-empDETAILS 11,4,'DEVA','PRABHA','2000-03-23','WRITING','PPP','IDUKKI','INDIA',6685990000
+EXEC empDETAILS 11,4,'DEVA','PRABHA','2000-03-23','WRITING','PPP','IDUKKI','INDIA',6685990000
 
 
--- 4. UPDATE-------------------------------------------------------------------------
+-- 4. UPDATE
 CREATE PROCEDURE upEMP
-@EMPID INT,
-@DEPID INT,
-@LAST VARCHAR(20),
-@CITY VARCHAR(20)
+@eid INT,
+@did INT,
+@lname VARCHAR(20),
+@city VARCHAR(20)
 AS
 	BEGIN
-		UPDATE EMP SET 
-						DEP_ID = @DEPID,
-						LNAME = @LAST,
-						CITY = @CITY
-	               WHERE EMP_ID = @EMPID
+		UPDATE employee SET 
+						dep_id = @did,
+						lname = @lname,
+						city = @city
+	               WHERE emp_id = @eid
 	END
 
-	upEMP 11, 2,'PRIYA','UDUPI' 
+EXEC upEMP 11, 2,'PRIYA','UDUPI' 
 
---DELETE--------------------------------------------
+--DELETE
 CREATE PROCEDURE delEMP
-@EMPID INT
+@eid INT
 AS
 	BEGIN
-		DELETE FROM EMP
-		WHERE EMP_ID=@EMPID
+		DELETE FROM employee
+		WHERE emp_id=@eid
 	END
 
-dElEMP 11
+EXEC dElEMP 11
 
---------------------------------------- CURD OPEATIONS WITH SINGLE STORED PROCEDURE--------------------------------------------------------------------------
+---- CURD OPEATIONS WITH SINGLE STORED PROCEDURE
 CREATE PROCEDURE curdOPERATION
-@OPEARATION VARCHAR(10),
-@ID INT = NULL,
-@NAME VARCHAR(20) = NULL
+@operation VARCHAR(10),
+@id INT = NULL,
+@name VARCHAR(20) = NULL
 AS
 	BEGIN
-		IF @OPEARATION = 'CREATE'
+		IF @operation = 'create'
 		BEGIN
-			INSERT INTO DEPARTMENT VALUES(@ID,@NAME)
+			INSERT INTO department VALUES(@id,@name)
 		END
 
-		ELSE IF @OPEARATION = 'READ'
+		ELSE IF @operation = 'read'
 		BEGIN
-			SELECT * FROM DEPARTMENT 
+			SELECT * FROM department 
 		END
 
-		ELSE IF @OPEARATION = 'UPDATE'
+		ELSE IF @operation = 'update'
 		BEGIN
-			UPDATE DEPARTMENT SET 
-								DEP_NAME = @NAME
-								WHERE DEP_ID=@ID
+			UPDATE department SET 
+								dep_name = @name
+								WHERE dep_id=@id
 		END
 
-		ELSE IF @OPEARATION = 'DELETE'
+		ELSE IF @operation = 'delete'
 		BEGIN
-			DELETE FROM DEPARTMENT
-			WHERE DEP_ID = @ID
+			DELETE FROM department
+			WHERE dep_id = @id
 		END
 	END
 
-curdOPERATION 'CREATE',6,'ADVERTISMENT'
-curdOPERATION'READ'
-curdOPERATION 'UPDATE',6,'BUSINESS'
-curdOPERATION 'DELETE',6
+EXEC curdOPERATION 'create',6,'Adevertisment'
+EXEC curdOPERATION'read'
+EXEC curdOPERATION 'upadte',6,'Business'
+EXEC curdOPERATION 'delete',6
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 
 
