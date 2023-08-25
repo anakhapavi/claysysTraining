@@ -6,7 +6,7 @@
    body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }  
  /* navigation */
  .navbar {
@@ -28,28 +28,32 @@
  }
   */
 
+  .topnav {
+    overflow: hidden;
+    background-color: #FF7676;
+  }
+  
+
   /* Style the topnav links */
     .topnav a {
-    float: left;
-    display: block;
-    color:#f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-family: Verdana;
-    float: right;
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
 
   }
    /* Change color on hover */
   .topnav a:hover {
-    background-color:black;
-    color: #ddd;
+    background-color:#ddd;
+    color:black;
     padding: 20px 16px;
   }
 
   /* logo */
   .logo img {
-    width: 120px; /* Adjust the width as needed */
+    width: 120px;
     height: auto;
   }
 
@@ -86,7 +90,7 @@
 }
 
 .social-icons a:hover {
-    color: #ffcc00;
+    color:black;
 }
 
   
