@@ -26,15 +26,16 @@ body {
 
   .container {
     position: relative;
-    display: flex;
+    display:inline;
     justify-content: center;
     align-items: center;
-    max-width: 700px;
-    width: 100%;
+    max-width: 500px;
+    width: 90%;
     background: #fff;
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    
   }
 
 
@@ -44,11 +45,19 @@ body {
   }
 
   .container input {
-    width: 100%;
+    width: 60%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 3px;
+    
+  }
+
+  .container p,span{
+
+    text-align: right;
+    font-family: 'Poppins',sans-serif;
+    
   }
 
   .home-icon {
@@ -62,7 +71,7 @@ body {
   .container select{
     padding: 10px;
     margin-bottom: 10px;
-    width: 100%;
+    width: 65%;
     border: 1px solid #ccc;
     border-radius: 3px;  
   }
@@ -71,24 +80,24 @@ body {
       
     padding: 10px;
     margin-bottom: 10px;
-    width: 100%;
+    width: 60%;
     border: 1px solid #ccc;
     border-radius: 3px;
   }
 
   .radio-group {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
+    display:inline-flex;
+    gap: 15px;
+    margin-bottom: 10px;
   }
   
   .radio-group label {
-    margin: 0;
+    margin: 2;
   }
   
 
   .container button {
-    width: 100%;
+    width: 40%;
     background-color: #3498db;
     color: #fff;
     border: none;
@@ -103,8 +112,9 @@ body {
 
   .error-message {
     color: red;
-    font-size: 14px;
+    font-size: 16px;
     display: none;
+    
   }
   
   img {
@@ -112,12 +122,15 @@ body {
     height: auto;
     margin-bottom: 20px;
 }
+.logo{
+  top: 20px;
+  left: 20px;
+  width: 100px; 
+  height: auto;
+  position: absolute;
+  
+}
 
-#city {
-    display: none;
-}
-#state:checked + #city {
-    display: block;
-}
+
 
  
