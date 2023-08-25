@@ -40,30 +40,10 @@ duration and speed */
 animation: slide 10s ease infinite;
 }
 
-/* Set the background color
-of each of the slides */
-.slide:nth-child(1) {
-background: green;
-}
 
-.slide:nth-child(2) {
-background: pink;
-}
-
-.slide:nth-child(3) {
-background: red;
-}
-
-.slide:nth-child(4) {
-background: yellow;
-} 
-
-.slide:nth-child(5) {
-    background: yellow;
-    } 
 
 /* Define the animation
-for the slideshow */
+for the slideshow */ 
 @keyframes slide {
 
 /* Calculate the margin-left for
