@@ -12,16 +12,18 @@
     <!--<script src="sigin.js" defer></script> -->
 </head>
 <body>
+    <img src="claysys-logo.png" alt="Logo" class="logo">
     <a href="Home.html" class="home-icon"><i class="fas fa-home"></i></a>
     <div class="login-form">
+
         <form action="welcome.html" method="post">
             <header>Login</header>
             <label for="username">Username:</label>
-            <input type="text" id="username" placeholder="Enter username" oninput="validateUsername1()" required />
+            <input type="text" id="username" placeholder="Enter username"  oninput="validateUsername1()" onfocusout="validateUsername1()"  required />
             <span id="usernameError" class="error-message"></span>           
 
             <label for="password">Password:</label>
-            <input type="password" id="password" placeholder="Enter password" oninput="validatePassword1()" required />
+            <input type="password" id="password" placeholder="Enter password" oninput="validatePassword1()" onfocusout="validatePassword1()" required />
             <span id="passwordError" class="error-message"></span>
 
             <label for="remember">
@@ -34,5 +36,8 @@
             <p>New user? <a href="reg.html">Sign up</a></p>
         </form>
     </div>
+    <div class="footer">
+        <p>&copy; 2023 My Website. All rights reserved.</p>
+      </div>
 </body>
 </html>
