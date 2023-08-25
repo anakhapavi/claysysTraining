@@ -1,17 +1,46 @@
 
 
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #809a24;
-}
-.footer {
-    text-align: center;
-    max-width: 500px; 
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc; 
-    background-color: #fff; 
-    border-radius: 8px;
 
-  }
+body {
+    background-image: url('peakpx.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;    font-family: Arial, sans-serif;
+    padding-top: 80px;
+}
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 5px 0;
+    position: fixed; /* Fix the navbar in place */
+    top: 0; /* Position it at the top */
+    left: 0; /* Align it to the left */
+    right: 0;
+}
+.logo {
+ top: 20px;
+  left: 20px;
+  width: 100px; 
+  height: auto;
+  position: absolute;
+  
+}
+
+.footer {
+    padding: 20px;
+    text-align: center;
+    background-color:transparent;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+   padding:10px;
+   
+}
+.footer p {
+    margin: 0;
+}
+  
+
+
