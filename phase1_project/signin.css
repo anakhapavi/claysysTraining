@@ -1,7 +1,8 @@
 body {
-    background-image: url("sign.jpg"); 
+    background-image: url("wallpaper..jpg"); 
     /*background-color: #FFC107;*/
     background-repeat: no-repeat;
+    background: cover;
     
    }
 
@@ -25,10 +26,11 @@ body {
 
 /* Basic styling for the login form container */
  .login-form {
+  background-image: url('wallpaper..jpg');
     width: 400px;
     max-width: 600px;
     position: relative;
-    display: flex;
+    display: block;
     margin: auto;
     justify-content: center;
     align-items: center;
@@ -37,6 +39,7 @@ body {
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    background-color:#bea1a1;
   } 
  
   /* Styling for the form inputs */
@@ -85,4 +88,40 @@ body {
     font-family: verdana;
   }
 
+  .error-message{
+    color:red;
+    font-size: 16px;
+    font-family: 'Poppins',sans-serif;
+
+
+  }
+  a{
+    color: rgb(10, 35, 128);
+    font-family: 'Poppins',sans-serif;
+  }
+/*logo */
+.logo{
+  top: 20px;
+  left: 20px;
+  width: 100px; 
+  height: auto;
+  position: absolute;
+  
+}
+
+.footer {
+  padding: 10px;
+  text-align: center;
+  background-color: transparent;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+}
+
+.footer p {
+  margin: 0;
+  color:white;
+}
  
