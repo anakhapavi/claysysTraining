@@ -3,11 +3,20 @@ function validateFirstName() {
     const firstNameInput = document.getElementById('firstName');
     const firstNameError = document.getElementById('firstNameError');
     const firstName = firstNameInput.value.trim();
+    const firstNameRegex = /^[a-zA-Z]+$/;
+
   
     if (firstName === '') {
-      firstNameError.textContent = 'First Name cannot be blank';
+      firstNameError.textContent = 'First Name cannot be blank'; }
+    
+    else if (!firstNameRegex.test(firstNameInput.value)) {
+      firstNameError.textContent = 'Please enter letters only';
+      firstNameError.style.display = 'block';
+      firstNameInput.classList.add('invalid');
     } else {
-      firstNameError.textContent = '';
+      firstNameError.style.display = 'none';
+      firstNameInput.classList.remove('invalid');
+      firstName.textContent='';
     }
   }
 
@@ -16,13 +25,74 @@ function validateFirstName() {
     const lastNameInput = document.getElementById('lastName');
     const lastNameError = document.getElementById('lastNameError');
     const lastName = lastNameInput.value.trim();
+    const lastNameRegex = /^[a-zA-Z]+$/;
+
   
     if (lastName === '') {
-      lastNameError.textContent = 'Last Name cannot be blank';
-    } else {
-      lastNameError.textContent = '';
+      lastNameError.textContent = 'Last Name cannot be blank'; }
+
+    else if(!lastNameRegex.test(lastNameInput.value)){
+      lastNameError.textContent= 'Please enter letters only';
+      lastNameError.style.display='block';
+      lastNameInput.classList.add('invalid');
+
+    } else{
+      lastNameError.style.display= 'none';
+      lastNameInput.classList.remove('invalid');
+      lastName.textContent='';
     }
   }
+
+  /*
+//validate dob
+function validateDOB() {
+  const dobInput = document.getElementById('dob');
+  const dobError = document.getElementById('dobError');
+  const dob = dobInput.value.trim();
+
+  if (dob === '') {
+    dobError.textContent = 'Date of birth is required';
+  } else {
+    dobError.textContent = '';
+  }
+}
+
+  //validate age
+function validateAge() {
+  const ageInput = document.getElementById('age');
+  const ageError = document.getElementById('ageError');
+  const age = ageInput.value.trim();
+
+  if (age === '') {
+    ageError.textContent = 'Age is required';
+  } else {
+    ageError.textContent = '';
+  }
+}
+*/
+
+// Validate DOB and update age
+document.addEventListener('DOMContentLoaded', function() {
+  const dobInput = document.getElementById('dob');
+  const ageInput = document.getElementById('age');
+  
+  dobInput.addEventListener('input', function() {
+      const dobValue = dobInput.value;
+      if (dobValue) {
+          const dobDate = new Date(dobValue);
+          const now = new Date();
+          const monthDiff = now - dobDate;
+          
+          const ageDate = new Date(monthDiff);
+          const age = Math.abs(ageDate.getUTCFullYear() - 1970);
+          
+          ageInput.value = age;
+      } else {
+          ageInput.value = '';
+      }
+  });
+})
+ 
 
   // email validation 
 function validateEmail() 
@@ -47,8 +117,7 @@ else
   }
 }
 
-  // phone validation 
-  
+  // phone validation   
 
   function validateMobileNumber() {
     const mobileNumberInput = document.getElementById('mobileNumber');
@@ -121,17 +190,18 @@ else
   }
 
   //submission
-  function validateForm(event) {
+    function validateForm(event) {
     event.preventDefault(); // Prevent form submission for now
-  
-    // Check password match
-    validatePasswordMatch();
-  
+    
+    const confirmPasswordError = document.getElementById('cpasswordError');
+    
     // If there are no errors, submit the form
     if (confirmPasswordError.textContent === '') {
       event.target.submit();
     }
   }
+  
+
   //validate for login username
   function validateUsername1() {
     const usernameInput = document.getElementById('username');
@@ -143,7 +213,7 @@ else
     if (validUsernameRegex.test(username)) {
         usernameErrorSpan.textContent = '';
     } else {
-        usernameErrorSpan.textContent = 'Username must be 4 to 20 characters long and can only contain letters, numbers, and underscores.';
+        usernameErrorSpan.textContent = 'contain 4 to 20 characters long(letters, numbers, and underscores.)';
     }
 }
 //validate for login password
@@ -162,6 +232,8 @@ function validatePassword1() {
         digitRegex.test(password)) {
         passwordErrorSpan.textContent = '';
     } else {
-        passwordErrorSpan.textContent = 'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one digit.';
+        passwordErrorSpan.textContent = 'Atleast 8 characters long(atleast one uppercase,one lowercase, and one digit)';
     }
 }
+
+
