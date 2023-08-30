@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,11 +13,14 @@ namespace Claysys_WinFormsApp
 {
     public partial class user : Form
     {
-        public user()
+        public user(string username)
         {
             InitializeComponent();
+            _uname = username;
         }
 
+        private string connectionString = "Data Source=DESKTOP-V3KGRPP\\SQLEXPRESS;Initial Catalog=Management;Integrated Security=True ";
+        string sql, _uname;
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
@@ -36,7 +40,123 @@ namespace Claysys_WinFormsApp
 
         private void btn_view_Click(object sender, EventArgs e)
         {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    con.Open();
 
+                    sql = " SELECT * FROM register WHERE username ='" + label1.Text + "' ";
+
+                    using (SqlDataAdapter adp = new SqlDataAdapter(sql, con))
+                    {
+                        DataSet ds = new DataSet();
+                        adp.Fill(ds);
+                        dataGridView1.DataSource = ds.Tables[0];
+                    }
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void user_Load(object sender, EventArgs e)
+        {
+            label1.Text = _uname;
+
+        }
+
+        private void comboBox_user_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_update_Click(object sender, EventArgs e)
+        {
+            if (comboBox_user.SelectedItem.ToString() == "Email")
+            {
+                try
+                {
+                    using (SqlConnection con = new SqlConnection(connectionString))
+                    {
+                        con.Open();
+                        sql = "UPDATE register SET email = @Email  where username=@Username ";
+
+                        using (SqlCommand cmd = new SqlCommand(sql, con))
+                        {
+                            cmd.Parameters.AddWithValue("@Email", txtBox_user.Text);
+                            cmd.Parameters.AddWithValue("@Username", label1.Text);
+
+                            cmd.ExecuteNonQuery();
+                            MessageBox.Show("Sucessfully updated");
+                        }
+                    }
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
+            }
+
+            else if (comboBox_user.SelectedItem.ToString() == "Phone")
+            {
+                try
+                {
+                    using (SqlConnection con = new SqlConnection(connectionString))
+                    {
+                        con.Open();
+                        sql = "UPDATE register SET phone = @Phone  where username=@Username ";
+
+                        using (SqlCommand cmd = new SqlCommand(sql, con))
+                        {
+                            cmd.Parameters.AddWithValue("@Phone", txtBox_user.Text);
+                            cmd.Parameters.AddWithValue("@Username", label1.Text);
+
+                            cmd.ExecuteNonQuery();
+                            MessageBox.Show("Sucessfully updated");
+                        }
+                    }
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
+            }
+        }
+
+        private void checkBoxView_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxView.Checked)
+            {
+                dataGridView1.Visible = true;
+                comboBox_user.Visible = false;
+                txtBox_user.Visible = false;
+
+                label3.Visible = false;
+                label4.Visible = false;
+
+            }
+            else
+            {
+                dataGridView1.Visible = false;
+
+
+            }
+
+        }
+
+        private void checkBoxUpdate_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxUpdate.Checked)
+            {
+                dataGridView1.Visible = false;
+                comboBox_user.Visible = true;
+                txtBox_user.Visible = true;
+
+                label3.Visible = true;
+                label4.Visible = true;
+            }
+            else
+            {
+                comboBox_user.Visible = false;
+                txtBox_user.Visible = false;
+
+                label3.Visible = false;
+                label4.Visible = false;
+            }
         }
     }
 }
