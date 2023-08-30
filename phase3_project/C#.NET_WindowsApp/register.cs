@@ -31,10 +31,10 @@ namespace Claysys_WinFormsApp
         {
             con.Open();
 
-            comboBox_state.Items.Add("--select--");
+            comboBox_state.Items.Insert(0, "--select--");
             comboBox_state.SelectedIndex = 0;
 
-            comboBox_city.Items.Add("--select--");
+            comboBox_city.Items.Insert(0,"--select--");
             comboBox_city.SelectedIndex = 0;
             comboBox_state.SelectedIndexChanged += comboBox_state_SelectedIndexChanged;
 
@@ -64,6 +64,13 @@ namespace Claysys_WinFormsApp
 
             string selectedState = comboBox_state.SelectedItem.ToString();
             string selectedCity = comboBox_city.SelectedItem.ToString();
+
+
+            if (selectedState == "Others")
+            {
+                selectedState = txt_otherstate.Text;
+                selectedCity = txt_othercity.Text;
+            }
 
 
             try
@@ -361,6 +368,12 @@ namespace Claysys_WinFormsApp
         //button clear
         private void btn_login_Click(object sender, EventArgs e)
         {
+            txtfname.Text = string.Empty;
+            txtlname.Text = string.Empty;
+            txtemail.Text = string.Empty;
+            txtphone.Text = string.Empty;
+                        
+
             txtusername.Text = string.Empty;
             txtpassword.Text = string.Empty;
             txtcpassword.Text = string.Empty;
@@ -395,6 +408,8 @@ namespace Claysys_WinFormsApp
         private void comboBox_state_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedState = comboBox_state.SelectedItem.ToString();
+            string selectedCity = "";
+
             comboBox_city.Items.Clear(); // Clear existing items
             comboBox_city.Items.Add("--select--");
 
@@ -437,13 +452,22 @@ namespace Claysys_WinFormsApp
                 txt_otherstate.Visible = true;
                 txt_othercity.Visible = true;
                 comboBox_city.Visible = false; // Hide the city ComboBox
+
+                selectedState = txt_otherstate.Text;
+                selectedCity = txt_othercity.Text;
             }
             else
             {
                 txt_otherstate.Visible = false;
                 txt_othercity.Visible = false;
                 comboBox_city.Visible = true; // Show the city ComboBox
+
+                selectedCity = comboBox_city.SelectedItem?.ToString() ?? "";
+
+
+
             }
+
         }
 
         private void checkBox_pswd_CheckedChanged(object sender, EventArgs e)
