@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Claysys_WinFormsApp
 {
@@ -30,7 +31,9 @@ namespace Claysys_WinFormsApp
             string inputUsername = txtusername.Text;
             string inputPassword = txtpassword.Text;
 
-            string sql = "SELECT usertype FROM login WHERE username = @Username AND password = @Password";
+            
+
+           string sql = "SELECT usertype FROM login WHERE username = @Username AND password = @Password";
 
 
             using (SqlCommand cmd = new SqlCommand(sql, con))
@@ -54,7 +57,7 @@ namespace Claysys_WinFormsApp
                         else if (userType == "user")
                         {
                             this.Hide();
-                            user obj = new user();
+                            user obj = new user(inputUsername);
                             obj.Show();
                         }
                     }
