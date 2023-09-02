@@ -1,0 +1,63 @@
+@model IEnumerable<MVC_ProductApplication.Models.Item>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Grocery Shop</h2>
+
+@if (TempData["infoMessage"] != null)
+{
+<div class="alert alert-info">
+<strong>Information: </strong> @TempData["infoMessage"]
+    <button type="button">
+    </button>
+</div>
+}
+
+<p>
+    @Html.ActionLink("Create New Item", "Create",null,new {@class ="btn btn-primary"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.qty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.image)
+        </th>
+        <th>Operations</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.qty)
+        </td>
+        <td>
+            @if (!string.IsNullOrEmpty(item.image))
+            {
+                <img src="@Url.Content("~/Images/" + item.image)" alt="Image" />
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "btn btn-primary" }) &nbsp;&nbsp;&nbsp;
+            @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-success" }) &nbsp;&nbsp;&nbsp;
+            @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>
