@@ -1,0 +1,10 @@
+CREATE PROCEDURE [dbo].[insertALLITEMS]
+(
+	@name VARCHAR(50),
+	@price DECIMAL(8,2),
+	@qty INT
+)
+AS
+BEGIN
+	INSERT INTO item VALUES(@name,@price,@qty);
+END
