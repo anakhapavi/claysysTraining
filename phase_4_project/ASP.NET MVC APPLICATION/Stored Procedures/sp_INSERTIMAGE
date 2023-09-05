@@ -1,0 +1,9 @@
+CREATE PROCEDURE [dbo].[sp_INSERTIMAGE]
+(
+@imgname VARCHAR(50),
+@imgpath VARBINARY(MAX)
+)
+AS
+BEGIN
+	INSERT INTO images VALUES(@imgname,@imgpath);
+END
