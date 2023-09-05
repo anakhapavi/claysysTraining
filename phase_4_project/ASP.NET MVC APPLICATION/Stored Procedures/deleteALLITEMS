@@ -1,0 +1,10 @@
+CREATE PROCEDURE [dbo].[deleteALLITEMS]
+(
+	@id INT
+
+)
+AS
+BEGIN
+	DELETE FROM item
+	WHERE id = @id;
+END
