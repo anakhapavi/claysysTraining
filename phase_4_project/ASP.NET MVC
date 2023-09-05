@@ -1,1 +1,12 @@
 ASP.NET MVC
+ASP.NET MVC is a web application architectural pattern and framework for building dynamic, data-driven web applications. 
+It separates the application logic into three interconnected components: 
+            1.Model
+                :The Model represents the application's data and business logic. 
+            
+            2.View
+                :The View is responsible for rendering the user interface and presenting data to the user. 
+
+            3.Controller
+                :The Controller acts as an intermediary between the Model and View.
+
