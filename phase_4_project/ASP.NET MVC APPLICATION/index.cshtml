@@ -1,0 +1,41 @@
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<center>
+    <h2>Image Upload</h2>
+</center>
+
+<p>
+    @Html.ActionLink("Add Image", "Add", "Image", new { area = "" }, new { @class = "btn btn-primary" })
+
+</p>
+
+@*@if(!string.IsNullOrEmpty(ViewBag.UploadMessage))
+{ 
+    <div class="alert alert-success">
+        @ViewBag.UploadMessage
+    </div>
+}
+
+@if(!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{ 
+    <div class="alert alert-danger">
+        @ViewBag.ErrorMessage
+      </div>
+}
+
+<p>
+    @Html.ActionLink("Add Image", "Image Upload", null, new { @class = "btn btn-primary" })
+
+</p>*@
+@*<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.imgname)</th>
+        <th>@Html.DisplayNameFor(model => model.imgpath)</th>
+
+    </tr>
+</table>*@
+
+
