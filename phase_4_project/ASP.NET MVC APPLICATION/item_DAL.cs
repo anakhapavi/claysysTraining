@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml.Linq;
 
 namespace MVC_ProductApplication.DAL
 {
@@ -16,7 +17,10 @@ namespace MVC_ProductApplication.DAL
     {
         string connectionString = ConfigurationManager.ConnectionStrings["shopConnectionString"].ToString();
 
-        //get all items
+        /// <summary>
+        /// get all items
+        /// </summary>
+        /// <returns></returns>
         public List<Item> GetAllItems()
         {
             List<Item> itemsList = new List<Item>();
@@ -48,9 +52,13 @@ namespace MVC_ProductApplication.DAL
             return itemsList;
         }
 
-        //insert items
+        /// <summary>
+        /// insert items by id
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
 
-        public bool InsertItems(Item item, HttpPostedFileBase image)
+        public bool InsertItems(Item item)
         {
             int id = 0;
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -61,15 +69,8 @@ namespace MVC_ProductApplication.DAL
                 cmd.Parameters.AddWithValue("@price", item.price);
                 cmd.Parameters.AddWithValue("@qty", item.qty);
 
-                if (image != null && image.ContentLength > 0)
-                { 
-                    string fileName = Path.GetFileName(image.FileName);
-                    string filePath = Path.Combine(HttpContext.Current.Server.MapPath("~/Images/"), fileName);
-                    image.SaveAs(filePath);
-                 }
-
                 con.Open();
-                id = cmd.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();
                 con.Close();
             }
             if (id > 0)
@@ -80,5 +81,91 @@ namespace MVC_ProductApplication.DAL
                 return false;
             }
         }
+
+        /// <summary>
+        /// update items
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        public bool UpdateItem(Item item)
+        {
+            int rowsAffected = 0;
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("updateALLITEMS", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id", item.id);
+                    cmd.Parameters.AddWithValue("@name", item.name);
+
+                    con.Open();
+                    rowsAffected = cmd.ExecuteNonQuery();
+                }
+            }
+
+            return rowsAffected > 0;
+        }
+
+
+        /// <summary>
+        /// get all items
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public List<Item> GetProductsById(int id)
+        {
+            List<Item> itemsList = new List<Item>();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = con.CreateCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "getITEMBYID ";
+                cmd.Parameters.AddWithValue("@id", id);
+
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+
+                con.Open();
+                adp.Fill(dt);
+                con.Close();
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    itemsList.Add(new Item
+                    {
+                        id = Convert.ToInt32(dr["id"]),
+                        name = dr["name"].ToString(),
+                        price = Convert.ToDecimal(dr["price"]),
+                        qty = Convert.ToInt32(dr["qty"]),
+                    });
+                }
+            }
+            return itemsList;
+        }
+
+        /// <summary>
+        /// Delete item
+        /// </summary>
+        /// <param name="id"></param>
+        public void DeleteItem(int id)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("deleteALLITEMS", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id", id);
+
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+        }
+
+
+
+
     }
 }
