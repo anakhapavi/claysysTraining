@@ -1,0 +1,38 @@
+@model MVC_ProductApplication.Models.Image
+
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add</h2>
+
+@if (!string.IsNullOrEmpty(ViewBag.UploadMessage))
+{
+    <div class="alert alert-success">
+        @ViewBag.UploadMessage
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-danger">
+        @ViewBag.ErrorMessage
+    </div>
+}
+
+
+@*@using (Html.BeginForm("Index", "Image", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="file">
+    <input type="submit" value="Save Image" />
+
+}*@
+@using (Html.BeginForm("Add", "Image", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="file" accept="image/*">
+    <input type="submit" value="Save Image" />
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
