@@ -21,25 +21,18 @@ namespace MVC_ProductApplication.Controllers
         /// GET: Image
         /// </summary>
         /// <returns></returns>
-        public ActionResult Index()
-        {
-           return View();
-        }
-
-        //[HttpPost]
-        //public ActionResult Index()
-        //{
-
-
-        //    return View();
-        //}
+       public ActionResult Index()
+     {
+     var imgList = obj.GetImages();
+     if (imgList.Count == 0)
+     {
+         TempData["infoMessage"] = "currently no data is available";
+     }
+     return View(imgList);
+ }
 
 
-        public ActionResult Add()
-        {
-            return View();
-        }
-
+      
         ///Add img
 
         //[HttpPost]
@@ -79,35 +72,67 @@ namespace MVC_ProductApplication.Controllers
         //    return View();
         //}
 
-        [HttpPost]
-        public ActionResult Add(HttpPostedFileBase file, Image image)
-        {
-            if (file != null && file.ContentLength > 0)
-            {
+      //  [HttpPost]
+         //public ActionResult Add(HttpPostedFileBase file, Image image)
+         //{
+            // if (file != null && file.ContentLength > 0)
+             //{
                 // Read the file into a byte array
-                byte[] imageData = new byte[file.ContentLength];
-                file.InputStream.Read(imageData, 0, file.ContentLength);
+               //  byte[] imageData = new byte[file.ContentLength];
+                 //file.InputStream.Read(imageData, 0, file.ContentLength);
 
-                image.imgname = Path.GetFileName(file.FileName);
-                image.imgpath = imageData;
+                 //image.imgname = Path.GetFileName(file.FileName);
+                // image.imgpath = imageData;
 
-                bool insertionResult = obj.InsertImage(image);
-                if (insertionResult)
-                {
-                    ViewBag.UploadMessage = "Uploaded successfully";
-                }
-                else
-                {
-                    ViewBag.ErrorMessage = "Not Uploaded";
-                }
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                ViewBag.ErrorMessage = "Invalid format, file extension should be 'jpg' or 'png'";
-                return View();
-            }
-        }
+                // bool insertionResult = obj.InsertImage(image);
+                // if (insertionResult)
+                 //{
+                 //    ViewBag.UploadMessage = "Uploaded successfully";
+                 //}
+                // else
+                // {
+                  //   ViewBag.ErrorMessage = "Not Uploaded";
+                 //}
+               //  return RedirectToAction("Index");
+             //}
+             //else
+             //{
+             //    ViewBag.ErrorMessage = "Invalid format, file extension should be 'jpg' or 'png'";
+             //    return View();
+           //  }
+        // }
+
+          [HttpPost]
+  public ActionResult Add(HttpPostedFileBase file, Image image)
+  {
+      if (file != null && file.ContentLength > 0)
+      {
+          // Read the file into a byte array
+          byte[] imageData = new byte[file.ContentLength];
+          file.InputStream.Read(imageData, 0, file.ContentLength);
+
+          image.imgname = Path.GetFileName(file.FileName);
+          image.imgpath = imageData;
+
+          bool insertionResult = obj.InsertImage(image);
+          if (insertionResult)
+          {
+              ViewBag.UploadMessage = "Uploaded successfully";
+          }
+          else
+          {
+              ViewBag.ErrorMessage = "Not Uploaded";
+          }
+          return RedirectToAction("Index");
+      }
+      else
+      {
+          ViewBag.ErrorMessage = "Invalid format, file extension should be 'jpg' or 'png'";
+          return View();
+      }
+  }
+
+
 
 
     }
