@@ -1,0 +1,86 @@
+	//SRS document
+
+	    Project Name :Zara Recruitment Management System for HR
+
+1) Main Home Page
+	About Us
+	Login
+	Register
+	Contactus
+	Jobs
+
+Login    - Username & Password ---> Both Canidate & HR
+	   Create Table Login
+		Username
+		Password
+		Usertype
+
+Register - Create Table canidate_registration
+	   	Fist Name
+	        Last Name
+	   	Date of Birth
+           	Gender
+           	Phonenumber
+	   	Emailaddress
+	   	State
+           	City
+           	Status
+  	   	Username
+	   	Password
+	   	Confirm Password
+
+	   Create table education
+	   	Highest Qualification
+	   	Course Name
+	   	Branch
+	   	Passout Year
+	   	University/College Name
+           	CGPA
+	   	Work Experience
+          	No.of Years
+           	Job Role
+           	Location
+                Last Salary
+                Skills
+	   
+
+Contactus
+	  Contact Information.
+
+Jobs 
+	Available Job Information and link for applay the jobs.
+
+2) HR Home Page
+		View Registerd Candidates details
+		Edit,Reject the candidates
+		Schedule interview - For approved candidates
+
+		Create Table Schedule
+			DateTime
+			Meeting Link
+			Organiser
+
+		Add new jobs
+
+		Create Table Vaccancy
+			Vaccancy id
+			Job Role
+			Availability
+			Experience
+			Status
+ 
+		Change Profile pic,hr password
+		Logout
+
+3)Candidate Home Page:
+		View Account info
+		Applay for the recuritment
+		Create Table Job
+			Job Id
+			Job Role
+			Experience
+
+		View Notification
+		Edit Profile
+		Change Profile pic,password
+		Logout
