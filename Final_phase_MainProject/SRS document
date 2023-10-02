@@ -1,13 +1,14 @@
-	//SRS document
-
-	    Project Name :Zara Recruitment Management System for HR
+		
+	    Project Name :Impact Recruitment Management System for HR
 
 1) Main Home Page
 	About Us
+	Contact Us
+	Gallery
+	Jobs
 	Login
 	Register
-	Contactus
-	Jobs
+	
 
 Login    - Username & Password ---> Both Canidate & HR
 	   Create Table Login
@@ -31,17 +32,14 @@ Register - Create Table canidate_registration
 
 	   Create table education
 	   	Highest Qualification
-	   	Course Name
-	   	Branch
 	   	Passout Year
-	   	University/College Name
            	CGPA
 	   	Work Experience
           	No.of Years
            	Job Role
-           	Location
                 Last Salary
                 Skills
+		Status
 	   
 
 Contactus
@@ -56,7 +54,12 @@ Jobs
 		Schedule interview - For approved candidates
 
 		Create Table Schedule
-			DateTime
+			Schedule id
+			Application id
+			Candidate id
+			Vaccancy id
+			Date
+			Time
 			Meeting Link
 			Organiser
 
@@ -65,22 +68,26 @@ Jobs
 		Create Table Vaccancy
 			Vaccancy id
 			Job Role
+			Skills
 			Availability
 			Experience
 			Status
  
-		Change Profile pic,hr password
+		Upload Image
+		Create Table Image
+			imgid
+			image
 		Logout
 
 3)Candidate Home Page:
 		View Account info
 		Applay for the recuritment
-		Create Table Job
-			Job Id
-			Job Role
-			Experience
+		Create Table Application
+			Application Id
+			Candidate Id
+			Vaccancy Id
+			Status
 
 		View Notification
 		Edit Profile
-		Change Profile pic,password
 		Logout
